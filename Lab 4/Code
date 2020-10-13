@@ -1,0 +1,50 @@
+use Lab4DB
+db
+//*************************************Assigment 1*******************************************************
+db.createCollection("books")
+db.books.save({_id:1,Category:"Machine Learning",Bookname:"Machine Learning for hackers",Author:"drew Conway",qty:25,price:400,rol:30,pages:350})
+db.books.save({_id:2,Category:"Business Intelligence",Bookname:"Fundamentals of business analytics",Author:"Seema Acharya",qty:55,price:500,rol:30,pages:250})
+db.books.save({_id:3,Category:"Analytics",Bookname:"Competeing on analytics",Author:"Thomas",qty:8,price:150,rol:20,pages:150})
+db.books.save({_id:4,Category:"Visualization",Bookname:"Visualising data",Author:"Ben Fry",qty:8,price:325,rol:6,pages:450})
+db.books.save({_id:5,Category:"Web mining",Bookname:"Learning R",Author:"Richard",qty:12,price:850,rol:10,pages:120})
+db.books.find()
+var map1=function(){
+    var category;
+    if(this.pages>=300)
+        category="Big books";
+    else
+        category="Small books";
+    emit(category,this.Bookname);
+    };
+var reduce1=function(category,Booknames){return Booknames.length;};
+db.books.mapReduce(
+    map1,
+    reduce1,
+    {out:"categorize"}
+    )
+db.categorize.find()
+
+//********************************************Assignment 2**************************************************************    
+db.MongoDBHandsOn.find()
+db.MongoDBHandsOn.aggregate([
+    { $group : { _id: null, sum: {$sum:"$children"} } }
+])
+db.MongoDBHandsOn.aggregate([
+    { $group : { _id: "Avg of Age", avg: {$avg:"$age"} } }
+])
+
+//**********************************************Assignment 3************************************************************  
+db.createCollection("Country")
+db.Country.insert({_id:1,Cities:["Bangalore","Chennai"]})
+db.Country.insert({_id:2,Cities:["Hyderabad","Mumbai","Delhi"]})
+db.Country.insert({_id:3,Cities:["rajamundry","jamshedpur","Jodhpur"]})
+db.Country.find()
+db.Country.update({_id:1},{$push:{population:{Bangalore:30,Chennai:45}}})
+db.Country.find()
+db.Country.update({_id:3},{$pop:{Cities:1}})
+db.Country.find()
+db.Country.update({Cities:"Hyderabad"},{$pull:{Cities:'Hyderabad'}})
+db.Country.find()
+db.Country.update({_id:1},{$set:{'Cities.2':'Srinagar'}})
+db.Country.update({_id:2},{$addToSet:{Cities:"Trichi"}})
+db.Country.find()
