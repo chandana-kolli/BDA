@@ -10,3 +10,5 @@ Hadoop Commands
 8. sudo javac -classpath ${HADOOP_CLASSPATH} -d '/home/chandana/Desktop/Hadoop/averageTemperature/average_temperture_classes' '/home/chandana/Desktop/Hadoop/averageTemperature/AverageDriver.java' '/home/chandana/Desktop/Hadoop/averageTemperature/AverageReducer.java' '/home/chandana/Desktop/Hadoop/averageTemperature/AverageMapper.java' 
 9. jar -cvf averageTemperature.jar -C average_temperature_classes/ .
 10. hadoop jar '/home/chandana/Desktop/Hadoop/averageTemperature/averageTemperature.jar' AverageDriver /AverageTemperature/Input /AverageTemperature/Output
+### OUTPUT:
+![](https://github.com/chandana-kolli/BDA/blob/master/Lab%208/output.JPG)
