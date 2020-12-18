@@ -11,7 +11,7 @@ Enter the following commands:
 5. Create a new directory (if needed) hadoop fs -mkdir /lab
 6. Move the input file to hadoop system: hadoop fs -copyFromLocal /home/pragati/Desktop/input /lab/textfile.txt
 7. Execute Map reduce program: hadoop jar /home/pragati/Desktop/wordcount.jar WordCount /lab/textfile.txt /lab/output
-8. To display output on the terminal: hadoopfs -cat /lab/output/part-r-00000
+8. To display output on the terminal: hadoop fs -cat /lab/output/part-r-00000
 OUTPUT:
 ![](https://user-images.githubusercontent.com/53899365/102468093-1c004e00-4077-11eb-8e1a-fa71e7bb3c34.png)
 ![](https://user-images.githubusercontent.com/53899365/102468098-1d317b00-4077-11eb-8693-3d0bc9059fa4.png)
